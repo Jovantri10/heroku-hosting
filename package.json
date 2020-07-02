@@ -1,82 +1,3 @@
-
-How to Host a Discord Bot on Heroku 24/7
-carlososuna11 (41)in #utopian-io • 2 years ago (edited)
-What Will I Learn?
-you will learn how to create a super simple discord bot and keep it connected to your discord server 24/7 for free.
-
-Requirements
-a Discord Account.
-a GitHub Account.
-a Heroku Account.
-Difficulty
-Basic.
-Tutorial Contents
-Creating your Bot on Discord:
-
-Open the following link and login using your discord account: https://discordapp.com/developers/applications/me
-
-Create a New Application.
-
-U5dstok2nEdDdkYqmieZdfGAMMjktSG_1680x8400.png
-
-Follow this instruction and Create a new application - Name Your App, Select an Avatar/Icon, and click "Create App."
-
-2.png
-
-Once the App is created, select it and Click on "Create a Bot User." Confirm and Choose "Yes. Do It!" on the box that pops up.
-
-3.png
-
-Make sure to take Note of the Client ID and Token. You will need these later when you begin programming your bot. Do not share this information!
-
-Next you need to invite the Bot to your Discord Server using the following link:
-https://discordapp.com/oauth2/authorize?&client_id=YOUR_CLIENT_ID_HERE&scope=bot&permissions=0
-
-Replace YOUR_CLIENT_ID_HERE with the Client ID from your created Bot.
-
-For a detailed walkthrough of this section, you can follow the following link:
-https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token
-
-creating the script
-
-Go with the following link to GitHub to create the repository: https://github.com/new
-
-Then we will create 3 scripts within that repository, which are these three
-github1.png
-
-bot.js
-
-const Discord = require('discord.js');
-
-const client = new Discord.Client();
-
- 
-
-client.on('ready', () => {
-
-    console.log('I am ready!');
-
-});
-
- 
-
-client.on('message', message => {
-
-    if (message.content === 'ping') {
-
-       message.reply('pong');
-
-       }
-
-});
-
- 
-
-// THIS  MUST  BE  THIS  WAY
-
-client.login(process.env.BOT_TOKEN);//where BOT_TOKEN is the token of our bot
-package.json
-
 {
 
   "name": "Test",
@@ -95,10 +16,14 @@ package.json
 
   "dependencies": {
 
-    "discord.js": "11.1.0",
+    "discord.js": "11.6.4",
 
     "request": "2.81.0"
 
+  },
+  
+  "engines": {
+    "node": "12.x"
   }
 
 }
